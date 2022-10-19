@@ -51,10 +51,44 @@ double PointinteretY (double k1,double k2,double b1,double b2)
 }
 
 
+// Дополнительно задание.
+// Найти произведение всех элементов массива целых чисел, меньших заданного числа. Размерность массива –10.
+// Заполнение массива осуществить случайными числами от 50 до 100.
+double[] array = GetArray(10,50,101);
+Console.WriteLine(String.Join(" ", array));
+double nums = ReadLine("Введите число: ");
+Proizved(array, nums);
+void Proizved(double[] array, double nums)
+{
+    double res = 1;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < nums)
+        {
+            res *= array[i];
+        }
+    }
+    if (res == 1) Console.WriteLine($"Значений меньше {nums} НЕТ!");
+    else Console.WriteLine($"Произведение числе равно {res} ");
+}   
+
+
+
 // Метот запроса значений в double.
 double ReadLine(string massage)
 {
     Console.Write(massage);
     double num = Convert.ToDouble(Console.ReadLine()!);
     return num;
+}
+// Метод заполнения массива
+double[] GetArray(int size, int min , int max)
+{
+    double[] arr = new double[size];
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = new Random().Next(min,max+1);
+
+    }
+    return arr;
 }
